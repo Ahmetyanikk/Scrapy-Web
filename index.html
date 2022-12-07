@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Login Screen</title>
+
+  <style>
+    body { max-width: 440px; }
+    pre  { overflow-x: auto; }
+    input { width: 50px }
+    body {
+    background-color: #ffee9d;
+    height: 100vh;
+    padding-top: 1px;
+    }
+    .label{
+    margin-bottom: 12px;
+    color: #FF9A00;
+    }
+.modbutton{
+  
+  margin-bottom: 15px;
+  width: 60%;
+  background: #FF165D;
+  border-radius: 5px;
+  border: 2px solid #FF165D;
+    
+  font-size: 1.25rem;
+  color: #c0ff9d;
+  display: inline-block;
+}
+.label{
+    color: #FF165D;
+}
+
+
+  </style>
+</head>
+
+<body>
+   
+<h2 id=title>Hoşgeldiniz</h2>
+<p>
+<label class="label">Id:<input type="text" id="UN" input name:"UserName"></label>
+</p>
+<p>
+<label class="label">Password:<input type="text" id="PW"input name:"Password"></label>
+</p>
+<p>
+    <input type="button"button class="button modbutton "id="Login" value="login"onclick="Login_Function()">   
+</p>
+<select name="Sirketler" id="Sirketler">
+    <option value="Sirket1">GittiGidiyor</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+    <option value="audi">Audi</option>
+  </select>
+
+<h3 id="login">Login Succesful </h3>
+<h3 id="login_Failed">Login Failed </h3>
+<h3 id="register">Register Succesful </h3>
+<h3 id="register_Failed">Register Failed </h3>
+
+<script>
+"use strict";
+
+var login =document.getElementById("login");//Giriş başarılı yazan yazı değişkeni
+var login_Failed =document.getElementById("login_Failed");//Giriş başarısız yazan yazı değişkeni
+var register =document.getElementById("register");//kayıt başarılı yazan yazı değişkeni
+var register_Failed =document.getElementById("register_Failed");//kayıt başarısız yazan yazı değişkeni
+
+login.style.display="none"
+login_Failed.style.display="none"
+
+register.style.display="none"
+register_Failed.style.display="none"
+
+var UserName=new Array("Admin");// Kullanıcı isimleri temsil etmesi için Array oluşturuyoruz.
+var Password=new Array("123");// Şifreleri temsil etmesi için Array oluşturuyoruz.
+
+// UN USERNAME'i temsil eden ve  html tarafından gelen kullanıcı adı Stringini temsil eder.
+// PW Password'i temsil eden ve  html tarafından gelen şifre Stringini temsil eder.
+
+
+function Login_Function(){
+
+    var count = 0;// Sayaç 
+
+    for(var i=0;i<Password.length;i++){
+
+        // Eğer giriş bilgileri algoritmadaki bilgilerle uyuşuyorsa Sayaç rakamı değişir.
+
+        if (UN.value==UserName[i]&&PW.value==Password[i]){
+
+            count++;
+        }
+    }
+    
+    //Sayaç verisi değişmişse Giriş başarılı kısmından devam edilir.
+    if(count==1){
+
+        login.style.display="inline";
+        login_Failed.style.display="none";
+        register.style.display="none";
+        register_Failed.style.display="none";
+
+    }
+
+    // sayaç verisi değişmemişse Giriş başarısız kısmından devam edilir.
+
+    else{
+
+        login_Failed.style.display="inline";
+        login.style.display="none";
+        register.style.display="none";
+        register_Failed.style.display="none";
+            
+    }
+    
+}
+
+function Register_Function(){
+
+    var count=0;// Sayaç 
+
+    for(var i=0;i<Password.length;i++){
+
+        // Eğer kayıt bilgileri sistemde bir kullanıcı ile aynıysa sayaç artırılır
+        if (UN.value==UserName[i]||PW.value==Password[i]){
+
+        count++;
+
+        }
+
+    }
+
+    //Sayaç verisi değişmişse Kayıt başarısız kısmından devam edilir. 
+    if(count!=0){
+
+        register_Failed.style.display="inline";
+        login.style.display="none";
+        register.style.display="none";
+        login_Failed.style.display="none";
+         
+    }
+
+    // sayaç verisi değişmemişse Kayıt başarılı kısmından devam edilir.
+    else{
+
+        register.style.display="inline";
+        login.style.display="none";
+        login_Failed.style.display="none";
+        register_Failed.style.display="none";
+
+        UserName.push(UN.value);
+        Password.push(PW.value);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
