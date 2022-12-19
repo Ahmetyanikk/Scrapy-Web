@@ -19,10 +19,14 @@
     color: #FF9A00;
     }
 .modbutton{
-  
-  margin-bottom: 15px;
-  width: 60%;
-  background: #FF165D;
+  text-align:center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 20%;
+  background: green;
   border-radius: 5px;
   border: 2px solid #FF165D;
     
@@ -42,10 +46,10 @@
    
 <h2 id=title>Hoşgeldiniz</h2>
 <p>
-<label class="label">Id:<input type="text" id="UN" input name:"UserName"></label>
+<label class="label">Id<input type="text" id="UN" input name:"UserName"></label>
 </p>
 <p>
-<label class="label">Password:<input type="text" id="PW"input name:"Password"></label>
+<label class="label">Password<input type="text" id="PW"input name:"Password"></label>
 </p>
 <p>
     <input type="button"button class="button modbutton "id="Login" value="login"onclick="Login_Function()">   
